@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container-fluid outer">
+    <div class="row pt-7 px-5" style="min-height:600px;background:#f2f2f2">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="background:#aeb9c0">
+<div class="fs-2 my-3 text-center"><b class="text-bcolor"> Registration form </b></div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-6"><b>Name-</b><br/>
+                <input type="text" name="name" required placeholder="Enter your name" class="form-control text"/> <br/>
+               <b>Password- </b> </br>
+                <input type="text" name="passwd" required placeholder="Enter your Enter your password"class="form-control text"/> <br/>
+                <b>Email- </b> </br>
+                <input type="text" name="email" required placeholder="Enter your Enter your email"class="form-control text"/> <br/>
+            </div>
+            <div class="col-sm-6"><b>Mobile-</b><br/>
+                <input type="text" name="mobile" required placeholder="Enter your mobile no."class="form-control text"/> <br/>
+
+                <b>Upload Image-</b> </br>
+                <input type ="file" name="ppic" class="form-control text" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12"><b>Address-</b>
+            <textarea class="form-control " name="address" required placeholder="Enter your address.."></textarea> <br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+             <input type ="checkbox"/>  <b> I accept the term of Use & Privacy Policy.</b>
+            </div>
+        </div>
+<input type="submit" value="SUBMIT" class="btn bg-ocolor" />
+        </form>
+                       </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

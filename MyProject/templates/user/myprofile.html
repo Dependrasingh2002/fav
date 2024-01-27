@@ -1,0 +1,101 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script>
+   $(document).ready(function(){
+   $("#btne").click(function(){
+
+  $(".uform").slideToggle(5000)
+   })
+   })
+</script>
+<style>
+.uform
+{
+display:none;
+}
+</style>
+
+{% if not request.session.userid %}
+<script>
+    alert('You have login first....')
+    location.href="/user/signin/"
+</script>
+{% endif %}
+<h2 class="fs-2 text-center"><b class="text-bcolor">My<b class="text-ocolor"> Profile</b>
+<i class="fa-brands fa-product-hunt"></i></b>
+</h2>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+            <!---start card--->
+            {% for x in mdata %}
+            <div class="card mb-3 w-100">
+  <div class="row g-0">
+    <div class="col-md-4 p-3">
+      <img src="/{{x.ppic}}"
+           style="min-height:300px;"class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{x.name}}</h5>
+        <p class="card-text">
+            <b>Mobile  :</b>{{x.mobile}}</br>
+            <b>Email  :</b>{{x.email}}</br>
+            <b>Password  :</b>{{x.passwd}}</br>
+            <b>Address  :</b>{{x.address}}</br>
+
+            <a href="#" id="btne" class="btn btn-lg bg-ocolor float-end text-center"> Edit Profile</a>
+        </p>
+        <p class="card-text"><small class="text-muted"></small></p>
+      </div>
+    </div>
+  </div>
+</div>
+            {% endfor %}
+            <!---end card--->
+        </div>
+
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<!----form---->
+ <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 uform" style="background:#aeb9c0">
+<div class="fs-2 my-3 text-center"><b class="text-bcolor"> Registration form </b></div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-6"><b>Name-</b><br/>
+                <input type="text" name="name" required placeholder="Enter your name" class="form-control text"/> <br/>
+               <b>Password- </b> </br>
+                <input type="text" name="passwd" required placeholder="Enter your Enter your password"class="form-control text"/> <br/>
+            </div>
+            <div class="col-sm-6"><b>Mobile-</b><br/>
+                <input type="text" name="mobile" required placeholder="Enter your mobile no."class="form-control text"/> <br/>
+
+                <b>Upload Image-</b> </br>
+                <input type ="file" name="ppic" class="form-control text" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12"><b>Address-</b>
+            <textarea class="form-control " name="address" required placeholder="Enter your address.."></textarea> <br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+             <input type ="checkbox"/>  <b> I accept the term of Use & Privacy Policy.</b>
+            </div>
+        </div>
+<input type="submit" value="SUBMIT" class="btn bg-ocolor" />
+        </form>
+                       </div>
+            <div class="col-sm-2"></div>
+        </div>
+<!----end form---->
+{% endblock %}

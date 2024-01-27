@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="fs-1 my-3 text-center"><b class="text-ocolor">About Us </b></div>
+<div class="container-fluid outer">
+<div class="row pt-7 px-5" style="min-height:500px;background:#d4d4d4">
+    <div class="col-sm-6 pt-5 pb-5 w-50">
+        <img src="{% static 'images/head1.jpg' %}"style="width:100%;height:100%;"/>
+    </div>
+    <div class="col-sm-6 pt-5">
+        <h3 class="text-center text-bcolor"><b>Developer & designer</b></h3><br/>
+         <p class="text-align:center ps-5">
+        Knowing software engineering basics will only get you so far which is a problem
+        because software engineering often requires many different people from one team
+        coming together. That is why there are tools for software engineering that will
+        present the information in a way that is easy to understand and use. Remember
+        that software engineering begins long before a product has been designed. You
+        need many teams and many focuses to come together to get the end result.</p><br/>
+        <p class="text-align:center ps-5">A designer is a person who plans the form or structure
+            of something before it is made, by preparing drawings or plans.
+          In practice, anyone who creates tangible or intangible objects, products,
+            processes, laws, games, graphics, services, or experiences can be referred
+            to as a designer.</p>
+    </div>
+</div>
+</div>
+{% endblock %}
